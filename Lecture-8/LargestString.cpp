@@ -22,7 +22,6 @@ void Update(char* a, char *b) {
 }
 
 int main() {
-
 	int n;
 	cin >> n;
 	cin.get();
