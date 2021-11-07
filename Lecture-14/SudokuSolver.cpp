@@ -1,5 +1,6 @@
 // SudokuSolver.cpp
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 bool isSafeToPlace(int board[][9], int i, int j, int n, int number) {
@@ -27,7 +28,7 @@ bool isSafeToPlace(int board[][9], int i, int j, int n, int number) {
 }
 
 bool SudokuSolver(int board[][9], int i, int j, int n) {
-	// base case
+// base case
 	if (i == n) {
 		// Print the sudoku
 		for (int i = 0; i < n; ++i)
@@ -39,20 +40,21 @@ bool SudokuSolver(int board[][9], int i, int j, int n) {
 		}
 		return true;
 	}
-	// recursive case
+// recursive case
 	if (j == n) {
 		return SudokuSolver(board, i + 1, 0, n);
 	}
-	// If already filled cell hai toh move to the next cell
+// If already filled cell hai toh move to the next cell
 	if (board[i][j] != 0) {
 		return SudokuSolver(board, i, j + 1, n);
 	}
-	// Ek empty cell ka kaam krna hai, baaki ka kaam recursion krega
+// Ek empty cell ka kaam krna hai, baaki ka kaam recursion krega
 	for (int number = 1 ; number <= n ; number++) {
 		if (isSafeToPlace(board, i, j, n, number) == true) {
 			// Place the number if its safe to put it
 			board[i][j] = number;
-			bool kyaBaakiSolveHua = SudokuSolver(board, i, j + 1, n);
+			bool kyaBaakiSolveHua =
+			    SudokuSolver(board, i, j + 1, n);
 			if (kyaBaakiSolveHua == true) {
 				return true;
 			}
