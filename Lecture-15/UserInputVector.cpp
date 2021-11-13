@@ -22,6 +22,15 @@ int main() {
 	cout << endl;
 
 
+	v.push_back(n + 1);
+	cout << "Capacity " << v.capacity() << endl;
+
+	for (int i = 0 ; i < n + 1 ; i++) {
+		cout << v[i] << " ";
+	}
+	cout << endl;
+
+
 	return 0;
 }
 
