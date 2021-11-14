@@ -12,13 +12,11 @@ public:
 		}
 		return true;
 	}
+
 	void solve(string s, int i, vector<string> &v) {
 		// base case
 		if (i == s.length()) {
 			ans.push_back(v);
-			return;
-		}
-		if (i > s.length()) {
 			return;
 		}
 
