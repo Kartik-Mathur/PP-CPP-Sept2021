@@ -36,7 +36,7 @@ int main() {
 		if (isPrime1(i)) {
 			cout << i << " ";
 		}
-	}
+	}// n*sqrt(n);
 	cout << endl;
 
 
