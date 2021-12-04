@@ -95,7 +95,6 @@ istream& operator>>(istream& is, Car &X) {
 int main() {
 	Car A;
 	cin >> A;
-
 	// strcpy(A.name, "BMW");
 	// // A.price = -100;
 	// A.setPrice(-100);
