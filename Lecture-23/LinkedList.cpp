@@ -116,17 +116,31 @@ node* mergeSort(node* head) {
 	return nH;
 }
 
+void breakCycle(node* fast, node* head) {
+	node* slow = head;
+	node* p = head;
+	while (p->next != fast) {
+		p = p->next;
+	}
+
+	while (fast != slow) {
+		p = fast;
+		fast = fast->next;
+		slow = slow->next;
+	}
+	p->next = NULL;
+}
 bool isCyclic(node* head) {
 	if (head == NULL) {
 		return false;
 	}
-
 	node* fast, * slow;
 	fast = slow = head;
 	while (fast != NULL and fast->next != NULL) {
 		fast = fast->next->next;
 		slow = slow->next;
 		if (fast == slow) {
+			breakCycle(fast, head);
 			return true;
 		}
 	}
@@ -146,13 +160,18 @@ int main() {
 	insertAtEnd(head, tail, 6);
 	insertAtEnd(head, tail, 7);
 	insertAtEnd(head, tail, 8);
-	tail->next = head->next->next;
+	insertAtEnd(head, tail, 9);
+	insertAtEnd(head, tail, 10);
+	insertAtEnd(head, tail, 11);
+	insertAtEnd(head, tail, 12);
+	tail->next = head->next->next->next;
 	// printLL(head);
 	if (isCyclic(head) == false) {
 		printLL(head);
 	}
 	else {
-		cout << "Cycle is Present! Print Mat Karo" << endl;
+		cout << "Cycle is Present!" << endl;
+		printLL(head);
 	}
 	// node* nH = mergeSort(head);
 	// printLL(nH);
