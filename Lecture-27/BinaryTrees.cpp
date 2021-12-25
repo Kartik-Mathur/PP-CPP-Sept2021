@@ -209,10 +209,40 @@ node* buildTreeLevelOrder() {
 	return root;
 }
 
+int in[] = {1, 10, 4, 6, 7, 8, 3, 13, 14};
+int pre[] = {8, 10, 1, 6, 4, 7, 3, 14, 13};
+int n = 9;
+int i = 0;
+
+node* makeTree(int s, int e) {
+	// base case
+	if (s > e) {
+		return NULL;
+	}
+
+	// recursive case
+	int data = pre[i];
+	node* root = new node(data);
+	i++;
+
+	// search for data inside inorder array
+	int k = -1;
+	for (int j = s ; j <= e; j++) {
+		if (in[j] == data) {
+			k = j;
+			break;
+		}
+	}
+
+	root->left = makeTree(s, k - 1);
+	root->right = makeTree(k + 1, e);
+	return root;
+}
+
 int main() {
 
 	// node* root = createTree();
-	node* root = buildTreeLevelOrder();
+	node* root = makeTree(0, 8);
 	preorder(root);
 	cout << endl;
 	inorder(root);
