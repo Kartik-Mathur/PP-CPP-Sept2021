@@ -219,12 +219,10 @@ node* makeTree(int s, int e) {
 	if (s > e) {
 		return NULL;
 	}
-
 	// recursive case
 	int data = pre[i];
 	node* root = new node(data);
 	i++;
-
 	// search for data inside inorder array
 	int k = -1;
 	for (int j = s ; j <= e; j++) {
@@ -233,7 +231,6 @@ node* makeTree(int s, int e) {
 			break;
 		}
 	}
-
 	root->left = makeTree(s, k - 1);
 	root->right = makeTree(k + 1, e);
 	return root;
