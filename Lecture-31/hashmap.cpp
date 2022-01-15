@@ -47,7 +47,6 @@ class hashmap {
 				string k = head->key;
 				int v = head->value;
 				insert(k, v);
-
 				head = head->next;
 			}
 		}
@@ -82,8 +81,42 @@ public:
 		}
 	}
 
-	void print() {
+	node* search(string key) {
+		int indx = hash_function(key);
 
+		node* head = h[indx];
+		while (head) {
+			if (head->key == key) {
+				return head;
+			}
+			head = head->next;
+		}
+
+		return NULL;
+	}
+	// int &a = b;
+	int &operator[](string key) {
+		node* x = search(key);
+		if (x == NULL) {
+			// Key nhi h
+			int garbage;
+			insert(key, garbage);
+			x = search(key); // Ab toh insert krke search kia hai, ab toh milega hi
+			return x->value;
+		}
+		else {
+			// key hai
+			return x->value;
+		}
+	}
+
+	void delete(string key) {
+		int indx = hash_function(key);
+		node* head = h[indx];
+		// Deletion at front, deletion at mid ya deletion at end
+	}
+
+	void print() {
 		for (int i = 0; i < ts; ++i)
 		{
 			node* head = h[i];
@@ -110,9 +143,19 @@ int main() {
 	h.insert("Kiwi", 50);
 	h.insert("Banana", 80);
 	h.insert("Papaya", 180);
-	// h.insert("Papaya", 180);
+
+	h["Papaya"] = 200;
+	h["Pineapple"] = 140;
 
 	h.print();
+	cout << "Papaya ka price is : " << h["Papaya"] << endl;
+	node* ans = h.search("Mango");
+	if (ans) {
+		cout << "Found: " << ans->value << endl;
+	}
+	else {
+		cout << "Not found" << endl;
+	}
 
 
 
