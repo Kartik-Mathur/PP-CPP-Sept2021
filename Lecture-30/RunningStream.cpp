@@ -10,9 +10,7 @@ void printHeap(priority_queue<int, vector<int>, greater<int> > h) {
 	}
 	cout << endl;
 }
-
 int main() {
-
 	priority_queue<int, vector<int>, greater<int> > h;
 	int number;
 	int k = 3;
