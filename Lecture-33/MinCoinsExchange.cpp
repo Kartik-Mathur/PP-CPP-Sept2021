@@ -55,7 +55,6 @@ int topDown(int amt, int *deno, int n, int *dp) {
 }
 
 int bottomUp(int amt, int *deno, int n) {
-
 	vector<int> dp(amt + 1, INT_MAX);
 	dp[0] = 0;
 
