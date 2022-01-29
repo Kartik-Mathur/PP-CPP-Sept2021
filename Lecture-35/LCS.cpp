@@ -74,8 +74,14 @@ int bottomUp(char *s1, char *s2) {
 
 int main() {
 
-	char a[] = "abce";
-	char b[] = "ace";
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+
+	char a[100]; // "abce"
+	char b[100]; // "ace";
+	cin >> a >> b;
 
 	int dp[100][100];
 	memset(dp, -1, sizeof dp);
