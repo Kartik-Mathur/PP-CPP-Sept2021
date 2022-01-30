@@ -10,8 +10,6 @@ int main() {
 
 	list<int> l;
 	list<int>::iterator it;
-
-
 	l.pb(1);
 	l.pb(2);
 	l.pb(3);
@@ -30,6 +28,25 @@ int main() {
 		cout << *it << "-->";
 	}
 	cout << endl;
+
+	for (auto it = l.rbegin() ; it != l.rend() ; it++) {
+		cout << *it << "-->";
+	}
+	cout << endl;
+	// l.sort();
+	// Deletion in linkedList
+	bool keyFound = false;
+
+	for (it = l.begin() ; it != l.end() ; it++) {
+		if ((*it) == 10) {
+			keyFound = true;
+			break;
+		}
+	}
+	// cout << endl;
+	if (keyFound == true) {
+		l.erase(it);
+	}
 
 	for (auto data : l) {
 		cout << data << "-->";
